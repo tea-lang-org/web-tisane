@@ -1,0 +1,16 @@
+#root {
+  margin: 0 auto;
+  padding-block: 2em;
+  padding-inline: 10em;
+}
+
+
+.card {
+  padding: 2em;
+}
+.t1 {
+  position: relative;
+  top: -29px;
+  left: 60px;
+  color: white;
+}
