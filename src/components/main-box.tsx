@@ -1,10 +1,26 @@
-import { GridItem, Tabs, TabList, Tab, TabPanels, TabPanel, Checkbox, Button, Text, Divider } from "@chakra-ui/react";
+import { GridItem, Tabs, TabList, Tab, TabPanels, TabPanel, Checkbox, Button, Text, Divider, useDisclosure, AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay } from "@chakra-ui/react";
+import { useRef, useState } from "react";
+import { LinkIcon } from "@chakra-ui/icons";
+
 
 export function MainBox() {
+    const [activeTab, setActiveTab] = useState(0);
+    const [progressValue, setProgressValue] = useState(0);
+
+    const handleContinue = () => {
+        if (activeTab < 3) {
+            setActiveTab(activeTab + 1);
+            setProgressValue(progressValue + 25);
+        }
+    };
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const cancelRef = useRef(null)
+
 
     return (
         <GridItem pl='400z`z`z' area={'main'}>
-            <Tabs variant='enclosed' className='tabs' align='center'>
+            <Tabs variant='enclosed' className='tabs' align='center' index={activeTab} onChange={setActiveTab}>
                 <TabList>
                     <Tab>IVs</Tab>
                     <Tab>Interactions</Tab>
@@ -21,7 +37,7 @@ export function MainBox() {
                             <br /> <br />
                             <Checkbox>Time</Checkbox>
                             <br /> <br />
-                            <Button colorScheme='green'>Continue</Button>
+                            <Button colorScheme='green' onClick={handleContinue}>Continue</Button>
                         </div>
 
                     </TabPanel>
@@ -34,7 +50,7 @@ export function MainBox() {
                             <br />  <br />
                             <i>If you believe you omitted a moderating relationship</i>, go back to your program and specify it using the <text className='snippet'>moderates</text> function call.
                             <br /> <br />
-                            <Button colorScheme='green'>Continue</Button>
+                            <Button colorScheme='green' onClick={handleContinue}>Continue</Button>
                         </div>
                     </TabPanel>
 
@@ -51,12 +67,42 @@ export function MainBox() {
                             <br /> <br />
 
                             <Divider orientation='horizontal' />
+                            <Button colorScheme='green' onClick={handleContinue}>Continue</Button>
 
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className='main-box'>
                             <Text fontSize='xl' fontWeight='semibold'>Choose a distribution of the errors: family and link functions.</Text>
+                            <br />
+                            <Button onClick={onOpen} leftIcon={<LinkIcon />} colorScheme='blue'>Share results</Button>
+                            <AlertDialog
+                                isOpen={isOpen}
+                                leastDestructiveRef={cancelRef}
+                                onClose={onClose}
+                            >
+                                <AlertDialogOverlay>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                            Share Results 🌺
+                                        </AlertDialogHeader>
+
+                                        <AlertDialogBody>
+                                            This will generate a shareable link to your results. Are you sure you want to share?
+                                        </AlertDialogBody>
+
+                                        <AlertDialogFooter>
+                                            <Button ref={cancelRef} onClick={onClose}>
+                                                Cancel
+                                            </Button>
+                                            <Button colorScheme='blue' onClick={onClose} ml={3}>
+                                                Share
+                                            </Button>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialogOverlay>
+                            </AlertDialog>
+
                         </div>
                     </TabPanel>
 
