@@ -20,3 +20,5 @@ Bun is usually quicker to run than node, so if you're testing something small, u
 - Added button with pop up asking if the user agrees to the terms and conditions
 - Made Left Hand Side bar dynamic and will change depending on the data that is uploaded
 - Added Upload File button to the Left Hand Side bar which takes in only a .csv file
+
+<img src= "https://i.imgur.com/EnoL6y4.png">
