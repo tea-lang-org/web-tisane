@@ -1,0 +1,60 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+
+.tabs {
+  align-items: left;
+}
+
+.bar {
+  border-radius: 0.25em;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tips-box {
+  background-color: #f8f8fa;
+  padding: 1em;
+  border: 1px solid #e1e1e8;
+  border-radius: 0.25em;
+
+}
+
+div {
+  text-align: left;
+  font-weight: 500;
+}
+
+.snippet {
+  color: #df4a8c
+}
+
+.main-box {
+  padding: 1em;
+  border: 1px solid #e1e1e8;
+  border-radius: 0.25em;
+}
